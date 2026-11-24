@@ -1,0 +1,7 @@
+{
+  "name": "workboard",
+  "label": "Workboard",
+  "description": "Your Jira board (+ Asana) inside Hermes.",
+  "version": "0.1.0",
+  "api": "plugin_api.py"
+}

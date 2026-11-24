@@ -1,0 +1,51 @@
+name: workboard
+label: Workboard
+version: 0.1.0
+author: Bradon Fredrickson
+homepage: https://github.com/bradonf333/hermes-workboard
+license: MIT
+description: >
+  Your Jira board inside Hermes Desktop: the board's own columns, your tickets in
+  its open sprints, recent Done, plus your Asana tasks. A Focus view shows what's
+  in flight and what just moved, and the agent can leave a note on a ticket after
+  working on it. Read-only against Jira and Asana.
+config_schema:
+  jira_base_url:
+    type: str
+    default: ""
+    label: Jira site
+    description: e.g. https://yourcompany.atlassian.net. Empty = JIRA_BASE_URL from .env.
+  jira_email:
+    type: str
+    default: ""
+    label: Jira email
+    description: The Atlassian account the token belongs to. Empty = JIRA_EMAIL from .env.
+  jira_api_token:
+    type: secret
+    env: JIRA_API_TOKEN
+    label: Jira API token
+    description: id.atlassian.com → Security → API tokens. Read access is enough.
+  jira_board:
+    type: str
+    default: ""
+    label: Jira board
+    description: Board name (e.g. "Team Board") or id. Empty = your first scrum board.
+  only_mine:
+    type: bool
+    default: true
+    label: Only my tickets
+    description: Off = everyone's tickets on the board.
+  done_days:
+    type: int
+    default: 7
+    label: Show Done for (days)
+    description: Tickets moved to Done within this many days stay on the board.
+  asana_access_token:
+    type: secret
+    env: ASANA_ACCESS_TOKEN
+    label: Asana personal access token
+    description: Optional. Asana → Settings → Apps → Developer apps. Shows your open Asana tasks under the board.
+provides_tools:
+  - workboard_board
+  - workboard_note
+provides_hooks: []
